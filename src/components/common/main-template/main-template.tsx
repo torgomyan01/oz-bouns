@@ -5,7 +5,11 @@ interface IThisProps {
 function MainTemplate({
   children,
 }: IThisProps) {
-  return children;
+  return (
+    <div className="container !pt-[70px]">
+      {children}
+    </div>
+  );
 }
 
 export default MainTemplate;
