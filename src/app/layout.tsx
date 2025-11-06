@@ -1,0 +1,41 @@
+import "./globals.scss";
+import "../icons/icons.css";
+
+import "./tailwind.css";
+
+import NextTopLoader from "nextjs-toploader";
+
+import { Providers } from "@/app/providers";
+import { UiProviders } from "@/components/common/UIProvider/ui-provider";
+import { SesProviders } from "@/components/common/session-provider/session-provider";
+import { getServerSession } from "next-auth";
+import { authOptions } from "@/lib/auth";
+import Script from "next/script";
+
+export async function generateMetadata() {
+  return {
+    title: "Ozon Bonus",
+    description: "",
+    keywords: [],
+  };
+}
+
+export default async function RootLayout({
+  children,
+}: Readonly<{
+  children: React.ReactNode;
+}>) {
+  const session = await getServerSession(authOptions);
+  return (
+    <html lang="ru" suppressHydrationWarning={true}>
+      <body>
+        <SesProviders session={session}>
+          <NextTopLoader />
+          <Providers>
+            <UiProviders>{children}</UiProviders>
+          </Providers>
+        </SesProviders>
+      </body>
+    </html>
+  );
+}

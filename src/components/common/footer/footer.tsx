@@ -1,0 +1,56 @@
+import Link from "next/link";
+import { SITE_URL } from "@/utils/consts";
+import moment from "moment";
+
+function Footer() {
+  return (
+    <footer className="footer">
+      <div className="wrapper">
+        <div className="info">
+          <Link href={SITE_URL.SEARCH} className="footer-logo">
+            <img src="/img/footer-logo.svg" alt="" />
+          </Link>
+          <div className="menu-wrap">
+            <h4>Разделы</h4>
+            <Link href="mailto:partners@swappe.ru">
+              Swappe Club: стать партнером
+            </Link>
+            <Link href={SITE_URL.ACCOUNT_TRANSACTIONS}>Сделки</Link>
+            <Link href={SITE_URL.ACCOUNT_FAVORITES}>Избранное</Link>
+            <Link href={SITE_URL.CHAT}>Чат</Link>
+          </div>
+          <div className="menu-wrap">
+            <h4>О Свопи</h4>
+            <Link href="#">Про Swappe</Link>
+            <Link href="#faq">FAQ</Link>
+            <Link href={SITE_URL.SUPPORT}>Поддержка</Link>
+            <Link href={SITE_URL.ARTICLES}>Советы и статьи</Link>
+          </div>
+          <div className="menu-wrap">
+            <h4>Положения и условия</h4>
+            <Link href={SITE_URL.PRIVACY_POLICY}>Конфиденциальность</Link>
+            <Link href={SITE_URL.PRIVACY_POLICY_USER_CONSENT}>
+              Условия пользования Swappe
+            </Link>
+          </div>
+        </div>
+        <p className="copyright">
+          Swappe - платформа для бартерного обмена и коллабораций. Условия
+          пользования.{" "}
+          <Link href={SITE_URL.PRIVACY_POLICY_USER_CONSENT}>
+            Условия пользования Swappe.
+          </Link>{" "}
+          <Link href={SITE_URL.PRIVACY_POLICY}>
+            Политика конфиденциальности.
+          </Link>
+          Оформляя подписку на Swappe, вы принимаете оферту. &copy;{" "}
+          {moment().format("YYYY")} Свопи. Все права защищены. ИП Махонина
+          Анастасия Евгеньевна ИНН: 550711863779 ОГРНИП:323470400092754{" "}
+          <a href="mailto:support@swappe.ru">support@swappe.ru</a>
+        </p>
+      </div>
+    </footer>
+  );
+}
+
+export default Footer;
