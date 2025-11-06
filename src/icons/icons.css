@@ -148,6 +148,10 @@
   content: "\f02c";
 }
 
+.fa-check:before {
+  content: "\f00c";
+}
+
 /*---------------------------------*/
 
 @font-face {

@@ -7,7 +7,7 @@ function Page() {
   return (
     <MainTemplate>
       <div className=" bg-white rounded-[20px]  ">
-        <div className="px-[16px] pt-[60px] pb-[40px] text-center">
+        <div className="px-[16px] pt-6 pb-6 text-center">
           <h1 className="text-[32px] font-medium text-start">Ozon Աշխատանք</h1>
           <h2 className="text-[16px] font-medium text-start">Մուտք գործելու համար գրեք ձեր տվյալները</h2>
           <div className="pt-[75px] flex-js-s gap-1 flex-col ">
