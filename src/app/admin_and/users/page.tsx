@@ -128,7 +128,7 @@ function UsersTablePage() {
       setError("Չհաջողվեց վերականգնել գաղտնաբառը");
     }
   }
- 
+
   const rows = useMemo(() => users, [users]);
 
   return (
@@ -171,7 +171,11 @@ function UsersTablePage() {
           {(item: User) => (
             <TableRow key={item.id}>
               <TableCell>{item.id}</TableCell>
-              <TableCell>{item.name}</TableCell>
+              <TableCell>
+                <Link href={`/${SITE_URL.ADMIN_AND_USER_PROFILE(item.id)}`}>
+                  {item.name}
+                </Link>
+              </TableCell>
               <TableCell>{item.phone_number}</TableCell>
               <TableCell>{item.card_number}</TableCell>
               <TableCell>{item.bank_name}</TableCell>
