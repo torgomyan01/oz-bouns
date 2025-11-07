@@ -11,7 +11,7 @@ model users {
   id           Int    @id @default(autoincrement())
   name         String @db.VarChar(255)
   password     String @db.VarChar(255)
-  phone_number String @db.VarChar(250)
+  phone_number String @db.VarChar(250) @unique
   card_number  String @db.VarChar(250)
   bank_name    String @db.VarChar(250)
 }

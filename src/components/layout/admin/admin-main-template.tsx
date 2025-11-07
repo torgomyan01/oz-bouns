@@ -19,59 +19,19 @@ import { useSession } from "next-auth/react";
 
 const NAVIGATION = [
   {
-    segment: SITE_URL.ADMIN,
-    title: "Главная",
+    segment: SITE_URL.ADMIN_AND,
+    title: "Գլխավոր",
     icon: <i className="fa-solid fa-house"></i>,
   },
   {
-    segment: SITE_URL.ADMIN_TARIFF,
-    title: "Тариф",
-    icon: <i className="fa-solid fa-badge-check"></i>,
+    segment: SITE_URL.ADMIN_AND_CREATE_USER,
+    title: "Ստեղծել օգտատատեր",
+    icon: <i className="fa-solid fa-user-plus"></i>,
   },
   {
-    segment: SITE_URL.ADMIN_USERS,
-    title: "Пользователи",
+    segment: SITE_URL.ADMIN_AND_USERS,
+    title: "Մասնակիցներ",
     icon: <i className="fa-solid fa-users"></i>,
-  },
-  {
-    segment: SITE_URL.ADMIN_SUPPORT,
-    title: "Техническая поддержка",
-    icon: <i className="fa-solid fa-head-side-headphones"></i>,
-  },
-  {
-    segment: SITE_URL.ADMIN_CHAT_NEWS,
-    title: "Чат новостей",
-    icon: <i className="fa-solid fa-newspaper"></i>,
-  },
-  {
-    segment: SITE_URL.ADMIN_ARTICLES,
-    title: "Статьи",
-    icon: <i className="fa-solid fa-book"></i>,
-  },
-  {
-    segment: SITE_URL.ADMIN_OFFERS,
-    title: "Предложения",
-    icon: <i className="fa-solid fa-briefcase"></i>,
-  },
-  {
-    segment: SITE_URL.ADMIN_TRANSACTIONS,
-    title: "Сделки",
-    icon: <i className="fa-solid fa-money-simple-from-bracket"></i>,
-  },
-  {
-    segment: SITE_URL.ADMIN_COMPANIES,
-    title: "Компании",
-    icon: <i className="fa-solid fa-building"></i>,
-  },
-  {
-    segment: SITE_URL.ADMIN_REVIEW_REPORTS,
-    title: "Жалобы на отзывы",
-    icon: <i className="fa-solid fa-flag"></i>,
-  },
-  {
-    segment: SITE_URL.ADMIN_CATEGORIES,
-    title: "Категории",
-    icon: <i className="fa-solid fa-tags"></i>,
   },
   // {
   //   segment: SITE_URL.ADMIN_PAGES,
@@ -102,7 +62,6 @@ function AdminMainTemplate({
   const router = useRouter();
   const { data: session } = useSession();
 
-  // Force light mode for admin area
   const lightTheme = createTheme({
     palette: { mode: "light" },
   });
@@ -147,8 +106,8 @@ function AdminMainTemplate({
         theme={lightTheme}
         branding={{
           logo: "",
-          title: "SWAPPE Admin",
-          homeUrl: `/${SITE_URL.ADMIN}`,
+          title: "ADMIN AND",
+          homeUrl: `/${SITE_URL.ADMIN_AND}`,
         }}
       >
         <DashboardLayout

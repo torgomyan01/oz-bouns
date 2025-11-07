@@ -148,6 +148,10 @@
   content: "\f02c";
 }
 
+.fa-user-plus:before {
+  content: "\f234";
+}
+
 /*---------------------------------*/
 
 @font-face {
