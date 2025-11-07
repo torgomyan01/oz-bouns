@@ -5,9 +5,11 @@ import bcrypt from "bcryptjs";
 import { prisma } from "@/lib/prisma";
 
 export const authOptions: NextAuthOptions = {
-  secret: "PmO>w7CzP7?qY3J0n%1mES!2lo28IyeW[qv~ZK{9ReJ{BA%bGLFs|9X{78X~swh",
   session: { strategy: "jwt" },
-  pages: {},
+  pages: {
+    signIn: "/",
+    error: "/",
+  },
   providers: [
     Credentials({
       name: "Phone & Password",
@@ -27,8 +29,6 @@ export const authOptions: NextAuthOptions = {
         const user: any = await prisma.users.findFirst({
           where: { phone_number },
         });
-
-        console.log(user);
 
         if (!user) {
           return null;
