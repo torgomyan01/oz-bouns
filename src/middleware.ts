@@ -3,7 +3,20 @@ import { NextResponse, type NextRequest } from "next/server";
 import { SITE_URL } from "@/utils/consts";
 import * as UAParser from "ua-parser-js"; // Corrected import
 
-export default withAuth(
+// Check if NEXTAUTH_SECRET is available
+const hasNextAuthSecret = !!process.env.NEXTAUTH_SECRET;
+
+// Simple middleware function that bypasses NextAuth if secret is missing
+function simpleMiddleware(request: NextRequest) {
+  const url = request.nextUrl.pathname;
+
+  // Allow all requests if NextAuth is not configured
+  // This prevents infinite redirect loops
+  return NextResponse.next();
+}
+
+// NextAuth middleware function
+const nextAuthMiddleware = withAuth(
   function middleware(request: NextRequest & { nextauth?: { token: any } }) {
     const url = request.nextUrl.pathname;
     const token = (request as any).nextauth?.token;
@@ -40,6 +53,12 @@ export default withAuth(
     },
   },
 );
+
+// Export the appropriate middleware based on NEXTAUTH_SECRET availability
+// This prevents infinite redirect loops when NEXTAUTH_SECRET is missing
+const middleware = hasNextAuthSecret ? nextAuthMiddleware : simpleMiddleware;
+
+export default middleware;
 
 export const config = {
   matcher: [SITE_URL.USER_PROFILE, SITE_URL.HOME],
